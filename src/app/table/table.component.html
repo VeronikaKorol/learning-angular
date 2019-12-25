@@ -1,0 +1,39 @@
+<div class="wrap">
+    <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Rating</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let item of heroes">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>
+                <star-rating 
+                    [value]="item.rating" 
+                    totalstars="5"
+                    checkedcolor="orange"
+                    uncheckedcolor="grey" 
+                    size="24px" 
+                    readonly="false" 
+                    (rate)="onRate(item, $event)">
+                </star-rating>
+            </td>
+            <td>
+                <button
+                    (click)="delete(item)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div class="add-input">
+        <input 
+            [(ngModel)]="newHeroName" />
+        <button
+            (click)="add()">
+            Add
+        </button>
+    </div>
+</div>

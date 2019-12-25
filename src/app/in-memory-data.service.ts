@@ -7,19 +7,24 @@ import { Injectable } from '@angular/core';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const heroes = [
-      { id: 11, name: 'Dr Nice' },
-      { id: 12, name: 'Narco' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
+    const heroes:Hero[] = [
+      new Hero(11, 'Dr Nice 11', this.rnd()),
+      new Hero(12, 'Narco', this.rnd()),
+      new Hero(13, 'Bombasto', this.rnd()),
+      new Hero(14, 'Celeritas', this.rnd()),
+      new Hero(15, 'Magneta', this.rnd()),
+      new Hero(16, 'RubberMan', this.rnd()),
+      new Hero(17, 'Dynama', this.rnd()),
+      new Hero(18, 'Dr IQ', this.rnd()),
+      new Hero(19, 'Magma', this.rnd()),
+      new Hero(20, 'Tornado', this.rnd()),
+      new Hero(21, '21', this.rnd()),
     ];
     return {heroes};
+  }
+
+  rnd() {
+      return Math.round(Math.random() * 5);
   }
 
   // Overrides the genId method to ensure that a hero always has an id.
